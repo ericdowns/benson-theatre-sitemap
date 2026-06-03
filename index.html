@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Benson Theatre — Proposed Site Structure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1c1a17;
+    --ink-soft:#5b554d;
+    --cream:#f7f3ec;
+    --card:#ffffff;
+    --line:#e4dccf;
+    --gold:#e3a52e;
+    --gold-soft:#f6ecd6;
+    --green:#3f7d5b;
+    --green-soft:#e3efe8;
+    --blue:#3a6ea5;
+    --blue-soft:#e6eef6;
+    --grey:#8a8175;
+    --grey-soft:#efeae1;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Manrope',system-ui,sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    padding:48px 24px 80px;
+  }
+  .wrap{max-width:1080px;margin:0 auto;}
+
+  /* Header */
+  header{text-align:center;margin-bottom:14px;}
+  .eyebrow{font-family:'Caveat',cursive;font-size:30px;color:var(--gold);line-height:1;}
+  h1{font-size:34px;font-weight:800;letter-spacing:-.02em;margin:6px 0 8px;}
+  .sub{color:var(--ink-soft);font-size:15px;max-width:620px;margin:0 auto;}
+  .meta{color:var(--grey);font-size:13px;margin-top:10px;}
+  .ver{display:inline-block;background:var(--ink);color:var(--cream);font-weight:700;font-size:12px;letter-spacing:.03em;padding:3px 10px;border-radius:999px;}
+
+  /* Version history */
+  .history{
+    max-width:680px;margin:46px auto 0;
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:6px 22px;
+  }
+  .history summary{
+    cursor:pointer;font-weight:700;font-size:14px;padding:14px 0;list-style:none;
+    display:flex;align-items:center;gap:8px;color:var(--ink);
+  }
+  .history summary::-webkit-details-marker{display:none;}
+  .history summary:before{content:"›";font-size:20px;color:var(--gold);transition:transform .15s;line-height:1;}
+  .history[open] summary:before{transform:rotate(90deg);}
+  .history .row{padding:10px 0 14px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink-soft);}
+  .history .row b{color:var(--ink);}
+  .history .vtag{display:inline-block;background:var(--gold-soft);color:#a9791a;font-weight:700;font-size:11.5px;padding:2px 8px;border-radius:999px;margin-right:8px;}
+
+  /* How to read */
+  .howto{
+    background:var(--gold-soft);
+    border:1px solid #ecd9a8;
+    border-radius:12px;
+    padding:16px 20px;
+    margin:28px 0 8px;
+    font-size:14px;
+    color:var(--ink-soft);
+  }
+  .howto b{color:var(--ink);}
+  .legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:12px;}
+  .legend span{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink-soft);}
+  .dot{width:11px;height:11px;border-radius:3px;display:inline-block;}
+
+  /* Section heading */
+  .section-head{
+    display:flex;align-items:center;gap:14px;
+    margin:42px 0 18px;
+  }
+  .section-head h2{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);white-space:nowrap;}
+  .section-head:before,.section-head:after{content:"";height:1px;background:var(--line);flex:1;}
+  .section-head:before{display:none;}
+
+  /* Card grid */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:18px 20px 20px;
+    box-shadow:0 1px 2px rgba(40,30,10,.04);
+  }
+  .card.primary{border-left:4px solid var(--gold);}
+  .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:10px;}
+  .card h3{font-size:18px;font-weight:700;letter-spacing:-.01em;}
+  .chip{
+    font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    padding:3px 9px;border-radius:999px;white-space:nowrap;
+  }
+  .chip.keep{background:var(--grey-soft);color:#6d6557;}
+  .chip.new{background:var(--green-soft);color:var(--green);}
+  .chip.merge{background:var(--blue-soft);color:var(--blue);}
+  .chip.update{background:var(--gold-soft);color:#a9791a;}
+  .chip.hidden{background:#efe6e6;color:#9a5b5b;}
+  .chip.archive{background:#ece8e2;color:#7e766a;}
+  ul{list-style:none;}
+  li{position:relative;padding-left:16px;font-size:14px;color:var(--ink-soft);margin-bottom:5px;}
+  li:before{content:"";position:absolute;left:2px;top:9px;width:5px;height:5px;border-radius:50%;background:var(--gold);}
+  .renamed{font-size:12.5px;color:var(--grey);font-style:italic;margin-top:-4px;margin-bottom:8px;}
+
+  /* The Space nested */
+  .full{grid-column:1 / -1;}
+  .children{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px;
+  }
+  .child{
+    background:var(--cream);border:1px dashed #d8cfbe;border-radius:10px;padding:12px 14px;
+  }
+  .child h4{font-size:14px;font-weight:700;margin-bottom:6px;}
+  .child li{font-size:12.5px;margin-bottom:3px;padding-left:13px;}
+  .child li:before{top:8px;width:4px;height:4px;}
+
+  footer{margin-top:48px;text-align:center;color:var(--grey);font-size:13px;}
+  footer b{color:var(--ink-soft);}
+
+  @media(max-width:720px){
+    .grid{grid-template-columns:1fr;}
+    .children{grid-template-columns:repeat(2,1fr);}
+    h1{font-size:27px;}
+  }
+  @media print{
+    body{background:#fff;padding:0;}
+    .card,.child{box-shadow:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Benson Theatre</div>
+    <h1>Proposed Website Structure</h1>
+    <p class="sub">A map of every page on the new site and what lives on each one. This pairs with the full content draft. Review the hierarchy, mark anything you want moved, renamed, added, or cut, and approve so we can lock it and start building.</p>
+    <p class="meta"><span class="ver">Version 1.0</span> · June 3, 2026 · For board review &amp; approval</p>
+  </header>
+
+  <div class="howto">
+    <b>How to read this:</b> Each box is one page. The tags show what is changing from the current site. Bullet points are the gist of what goes on each page, not final copy (final copy lives in the companion content doc). The top row is the main menu; below it are the supporting pages reached from the footer or from within other pages.
+    <div class="legend">
+      <span><span class="dot" style="background:#8a8175;"></span> Keep — carries over</span>
+      <span><span class="dot" style="background:var(--green);"></span> New — didn't exist before</span>
+      <span><span class="dot" style="background:var(--blue);"></span> Merged — combines old pages</span>
+      <span><span class="dot" style="background:var(--gold);"></span> Updated — rewritten / renamed</span>
+      <span><span class="dot" style="background:#9a5b5b;"></span> Hidden — live but off the menu</span>
+      <span><span class="dot" style="background:#7e766a;"></span> Archived — kept for old links</span>
+    </div>
+  </div>
+
+  <div class="section-head"><h2>Main Menu</h2></div>
+  <div class="grid">
+
+    <div class="card primary">
+      <div class="card-top"><h3>Home</h3><span class="chip update">Updated</span></div>
+      <ul>
+        <li>Featured upcoming events</li>
+        <li>Latest news / featured story</li>
+        <li>Main calls to action: Book the Theatre &amp; Donate</li>
+        <li>Quick links to Volunteer and Memberships</li>
+        <li>Twilight marquee hero photo</li>
+      </ul>
+    </div>
+
+    <div class="card primary">
+      <div class="card-top"><h3>About</h3><span class="chip update">Updated</span></div>
+      <ul>
+        <li>Who we are: historic 1923 theatre, reopened 2022</li>
+        <li>"What Happens Here": events, partnerships, learning, private events, preservation</li>
+        <li>Our history (folds in the old History page)</li>
+        <li>"Join Us" invitation</li>
+      </ul>
+    </div>
+
+    <div class="card primary">
+      <div class="card-top"><h3>Education &amp; Community</h3><span class="chip merge">Merged</span></div>
+      <p class="renamed">Replaces the old Programming &amp; Education pages</p>
+      <ul>
+        <li>Intro: learning, creating, connecting</li>
+        <li>Program areas: Workshops &amp; Classes, Artist Development, Community Partnerships, Speaker Series</li>
+        <li>"Interested in partnering?" outreach + contact</li>
+      </ul>
+    </div>
+
+    <div class="card primary">
+      <div class="card-top"><h3>Events</h3><span class="chip update">Updated</span></div>
+      <p class="renamed">Absorbs the old separate Calendar page</p>
+      <ul>
+        <li>Upcoming events list (default view)</li>
+        <li>Month-grid calendar toggle</li>
+        <li>Each event: date, details, buy-tickets link</li>
+      </ul>
+    </div>
+
+    <div class="card primary">
+      <div class="card-top"><h3>Rent the Theatre</h3><span class="chip update">Renamed</span></div>
+      <p class="renamed">Was "Booking &amp; Rentals"</p>
+      <ul>
+        <li>Pitch: host weddings, corporate events, fundraisers, gatherings</li>
+        <li>What the space offers (links to The Space)</li>
+        <li>Rental inquiry form + contact</li>
+        <li>Deposit &amp; balance payment link</li>
+      </ul>
+    </div>
+
+    <div class="card primary">
+      <div class="card-top"><h3>Newsroom</h3><span class="chip merge">Merged</span></div>
+      <p class="renamed">Replaces the old News &amp; Press pages</p>
+      <ul>
+        <li>Tabs: All Updates / BT Stories / In the Press</li>
+        <li>Press coverage (Omaha Magazine, World-Herald, KETV, MBJ, Metro, KIOS)</li>
+        <li>Original Benson Theatre stories &amp; announcements</li>
+        <li>Media inquiries contact</li>
+      </ul>
+    </div>
+
+    <div class="card primary">
+      <div class="card-top"><h3>Donate / Support</h3><span class="chip keep">Keep</span></div>
+      <ul>
+        <li>Donation pitch</li>
+        <li>PayPal donate button</li>
+        <li>Links to Memberships &amp; Volunteer</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="section-head"><h2>Supporting Pages</h2></div>
+  <div class="grid">
+
+    <div class="card full">
+      <div class="card-top"><h3>The Space</h3><span class="chip merge">Merged</span></div>
+      <p class="renamed">One page with sections, replacing the old separate Auditorium / Tech / Catering pages</p>
+      <div class="children">
+        <div class="child"><h4>Main Auditorium</h4><ul><li>Seating &amp; configurations</li><li>Capacity</li></ul></div>
+        <div class="child"><h4>Catering Room</h4><ul><li>Amenities</li><li>Layout</li></ul></div>
+        <div class="child"><h4>Tech Specs</h4><ul><li>Sound &amp; lighting</li><li>Equipment</li></ul></div>
+        <div class="child"><h4>Room Layout</h4><ul><li>Interactive diagram</li><li>For rental planning</li></ul></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><h3>Staff &amp; Leadership</h3><span class="chip update">Updated</span></div>
+      <ul>
+        <li>Team photos + bios</li>
+        <li>Board of directors</li>
+        <li>Needs a fresh current roster</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><h3>Community Partners</h3><span class="chip keep">Keep</span></div>
+      <ul>
+        <li>Partner &amp; sponsor recognition</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><h3>Parking</h3><span class="chip keep">Keep</span></div>
+      <ul>
+        <li>Where to park</li>
+        <li>Practical info for ticket buyers</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><h3>Venue Policies</h3><span class="chip update">Rewritten</span></div>
+      <ul>
+        <li>Code of conduct</li>
+        <li>Ticket &amp; refund info</li>
+        <li>Photography / recording</li>
+        <li>Inclusion statement</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><h3>Accessibility</h3><span class="chip update">Rewritten</span></div>
+      <ul>
+        <li>Accessibility statement</li>
+        <li>How to request accommodations</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><h3>Volunteer</h3><span class="chip keep">Keep</span></div>
+      <ul>
+        <li>Pitch to volunteer</li>
+        <li>Signup form</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><h3>Memberships</h3><span class="chip keep">Keep</span></div>
+      <ul>
+        <li>Paid membership tiers</li>
+        <li>Free Student tier</li>
+        <li>Member benefits</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><h3>Press Kit</h3><span class="chip new">New</span></div>
+      <ul>
+        <li>Logos &amp; photos</li>
+        <li>Boilerplate &amp; leadership bios</li>
+        <li>Nonprofit filing (990) link</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><h3>Payments / Deposits</h3><span class="chip hidden">Hidden</span></div>
+      <ul>
+        <li>Second payment button for rental balances</li>
+        <li>Reached by link only, not in the menu</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><h3>Green Room Campaign</h3><span class="chip archive">Archived</span></div>
+      <ul>
+        <li>Completed capital campaign</li>
+        <li>Kept live so old donor links don't break</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <details class="history">
+    <summary>Version history</summary>
+    <div class="row"><span class="vtag">v1.0</span><b>June 3, 2026</b> — First structure proposal. Combines the board's input into one map: Programming &amp; Education merged into "Education &amp; Community," News &amp; Press merged into "Newsroom," "Booking &amp; Rentals" renamed "Rent the Theatre," Press Kit added.</div>
+  </details>
+
+  <footer>
+    <p><b>Companion document:</b> full proposed copy for each page, page-by-page.</p>
+    <p style="margin-top:6px;">Benson Theatre website rebuild · Grain &amp; Mortar</p>
+  </footer>
+
+</div>
+</body>
+</html>
