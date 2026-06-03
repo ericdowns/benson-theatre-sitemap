@@ -127,9 +127,43 @@
   footer{margin-top:48px;text-align:center;color:var(--grey);font-size:13px;}
   footer b{color:var(--ink-soft);}
 
+  /* Nav intro note */
+  .navnote{font-size:13.5px;color:var(--ink-soft);margin:0 0 20px;max-width:760px;}
+  .navnote b{color:var(--ink);}
+  .mocklabel{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);margin:22px 0 10px;}
+
+  /* Header mock */
+  .navmock{border:1px solid var(--ink);background:#fff;}
+  .navbar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:15px 20px;border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .navbar .logo{font-weight:800;letter-spacing:.05em;font-size:15px;text-transform:uppercase;}
+  .navbar .nav{display:flex;align-items:center;gap:20px;font-size:13.5px;font-weight:600;flex-wrap:wrap;}
+  .navbar .nav .drop-parent:after{content:" \25BE";color:var(--gold);font-size:10px;}
+  .navbar .cta{background:var(--gold);color:#1c1a17;font-weight:700;padding:8px 15px;font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;}
+  .drops{display:grid;grid-template-columns:repeat(3,1fr);}
+  .drop{padding:15px 20px;border-right:1px solid var(--line);}
+  .drop:last-child{border-right:none;}
+  .drop h5{font-size:11.5px;font-weight:700;color:var(--ink);margin-bottom:9px;}
+  .drop h5 span{color:var(--gold);}
+  .drop ul li{font-size:13px;padding-left:0;margin-bottom:5px;color:var(--ink-soft);}
+  .drop ul li:before{display:none;}
+  .drop ul li small{color:var(--grey);}
+
+  /* Footer mock */
+  .footmock{background:#211f1b;color:#cfc8bb;padding:26px 24px 0;margin-top:14px;}
+  .footcols{display:grid;grid-template-columns:1.1fr 1.1fr 1fr 1.3fr;gap:22px;}
+  .footcol h5{color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px;}
+  .footcol ul li{font-size:13px;margin-bottom:7px;padding-left:0;color:#cfc8bb;}
+  .footcol ul li:before{display:none;}
+  .footcol .contact{font-size:13px;line-height:1.7;color:#cfc8bb;}
+  .footstrip{border-top:1px solid #3a3630;margin-top:22px;padding:13px 0;font-size:11.5px;color:#8f897e;display:flex;gap:8px 16px;flex-wrap:wrap;}
+  .footstrip .sep{color:#5a554d;}
+
   @media(max-width:720px){
     .grid{grid-template-columns:1fr;}
     .children{grid-template-columns:repeat(2,1fr);}
+    .drops{grid-template-columns:1fr;}
+    .drop{border-right:none;border-bottom:1px solid var(--line);}
+    .footcols{grid-template-columns:1fr 1fr;}
     h1{font-size:27px;}
   }
   @media print{
@@ -322,6 +356,101 @@
       </ul>
     </div>
 
+  </div>
+
+  <div class="section-head"><h2>Header &amp; Footer</h2></div>
+
+  <p class="navnote">How people get around. Seven items is too many across the top, so the supporting pages tuck into <b>three dropdowns</b> (About, Rent the Theatre, Support), with Events and Education as direct links and Donate as the one highlighted button. The footer then carries a full index, so every supporting page is reachable from a dropdown, the footer, or both. The only two pages kept out of the navigation on purpose are <b>Payments</b> (reached by direct link only) and <b>Green Room Campaign</b> (archived).</p>
+
+  <div class="mocklabel">Header</div>
+  <div class="navmock">
+    <div class="navbar">
+      <div class="logo">Benson Theatre</div>
+      <div class="nav">
+        <span>Events</span>
+        <span class="drop-parent">About</span>
+        <span>Education &amp; Community</span>
+        <span class="drop-parent">Rent the Theatre</span>
+        <span class="drop-parent">Support</span>
+        <span class="cta">Donate</span>
+      </div>
+    </div>
+    <div class="drops">
+      <div class="drop">
+        <h5>Under <span>About &#9662;</span></h5>
+        <ul>
+          <li>Our Story</li>
+          <li>Staff &amp; Leadership</li>
+          <li>Community Partners</li>
+          <li>Newsroom</li>
+          <li>Press Kit</li>
+        </ul>
+      </div>
+      <div class="drop">
+        <h5>Under <span>Rent the Theatre &#9662;</span></h5>
+        <ul>
+          <li>Rental Overview</li>
+          <li>The Space <small>(Auditorium, Catering, Tech, Layout)</small></li>
+          <li>Parking</li>
+          <li>Venue Policies</li>
+        </ul>
+      </div>
+      <div class="drop">
+        <h5>Under <span>Support &#9662;</span></h5>
+        <ul>
+          <li>Donate</li>
+          <li>Memberships</li>
+          <li>Volunteer</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="mocklabel">Footer</div>
+  <div class="footmock">
+    <div class="footcols">
+      <div class="footcol">
+        <h5>Visit</h5>
+        <ul>
+          <li>Events</li>
+          <li>Rent the Theatre</li>
+          <li>The Space</li>
+          <li>Parking</li>
+        </ul>
+      </div>
+      <div class="footcol">
+        <h5>About</h5>
+        <ul>
+          <li>Our Story</li>
+          <li>Education &amp; Community</li>
+          <li>Staff &amp; Leadership</li>
+          <li>Community Partners</li>
+          <li>Newsroom</li>
+          <li>Press Kit</li>
+        </ul>
+      </div>
+      <div class="footcol">
+        <h5>Support</h5>
+        <ul>
+          <li>Donate</li>
+          <li>Memberships</li>
+          <li>Volunteer</li>
+        </ul>
+      </div>
+      <div class="footcol">
+        <h5>Contact</h5>
+        <div class="contact">
+          6054 Maple Street<br>Omaha, NE 68104<br>402.991.4333<br>admin@bensontheatre.org<br>Facebook&nbsp;&nbsp;Instagram
+        </div>
+      </div>
+    </div>
+    <div class="footstrip">
+      <span>&copy; 2026 Benson Theatre</span><span class="sep">|</span>
+      <span>501(c)(3) nonprofit</span><span class="sep">|</span>
+      <span>Accessibility</span><span class="sep">|</span>
+      <span>Venue Policies</span><span class="sep">|</span>
+      <span>Privacy</span>
+    </div>
   </div>
 
   <div class="howto">
