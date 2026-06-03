@@ -103,12 +103,16 @@
     font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
     padding:3px 9px;border-radius:999px;white-space:nowrap;
   }
-  .chip.keep{background:var(--grey-soft);color:#6d6557;}
+  .chip.keep{background:#e9eef1;color:#5d6772;}
   .chip.new{background:var(--green-soft);color:var(--green);}
   .chip.merge{background:var(--blue-soft);color:var(--blue);}
   .chip.update{background:var(--gold-soft);color:#a9791a;}
-  .chip.hidden{background:#efe6e6;color:#9a5b5b;}
-  .chip.archive{background:#ece8e2;color:#7e766a;}
+  .chip.hidden{background:#ddd7cc;color:#6e665a;}
+  .chip.archive{background:#ddd7cc;color:#6e665a;}
+  /* Hidden + archived pages grey out so they visibly recede from the active site */
+  .card.muted{background:#efebe3;border-style:dashed;border-color:#d3cabf;box-shadow:none;opacity:.58;transition:opacity .15s;}
+  .card.muted h3{color:#7a7264;}
+  .card.muted:hover{opacity:1;}
   ul{list-style:none;}
   li{position:relative;padding-left:16px;font-size:14px;color:var(--ink-soft);margin-bottom:5px;}
   li:before{content:"";position:absolute;left:2px;top:9px;width:5px;height:5px;border-radius:50%;background:var(--gold);}
@@ -153,12 +157,12 @@
   <div class="howto">
     <b>How to read this:</b> Each box is one page. The tags show what is changing from the current site. Bullet points are the gist of what goes on each page, not final copy (final copy lives in the companion content doc). The top row is the main menu; below it are the supporting pages reached from the footer or from within other pages.
     <div class="legend">
-      <span><span class="dot" style="background:#8a8175;"></span> Keep — carries over</span>
+      <span><span class="dot" style="background:#5d6772;"></span> Keep — carries over unchanged</span>
       <span><span class="dot" style="background:var(--green);"></span> New — didn't exist before</span>
       <span><span class="dot" style="background:var(--blue);"></span> Merged — combines old pages</span>
       <span><span class="dot" style="background:var(--gold);"></span> Updated — rewritten / renamed</span>
-      <span><span class="dot" style="background:#9a5b5b;"></span> Hidden — live but off the menu</span>
-      <span><span class="dot" style="background:#7e766a;"></span> Archived — kept for old links</span>
+      <span><span class="dot" style="background:#cdc6b8;border:1px dashed #b3a994;"></span> Hidden — greyed out, live but off the menu</span>
+      <span><span class="dot" style="background:#cdc6b8;border:1px dashed #b3a994;"></span> Archived — greyed out, kept for old links</span>
     </div>
   </div>
 
@@ -321,7 +325,7 @@
       </ul>
     </div>
 
-    <div class="card">
+    <div class="card muted">
       <div class="card-top"><h3>Payments / Deposits</h3><span class="chip hidden">Hidden</span></div>
       <ul>
         <li>Second payment button for rental balances</li>
@@ -329,7 +333,7 @@
       </ul>
     </div>
 
-    <div class="card">
+    <div class="card muted">
       <div class="card-top"><h3>Green Room Campaign</h3><span class="chip archive">Archived</span></div>
       <ul>
         <li>Completed capital campaign</li>
