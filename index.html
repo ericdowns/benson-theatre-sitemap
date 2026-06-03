@@ -6,7 +6,7 @@
 <title>Benson Theatre — Proposed Site Structure</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#1c1a17;
@@ -35,18 +35,17 @@
   .wrap{max-width:1080px;margin:0 auto;}
 
   /* Header */
-  header{text-align:center;margin-bottom:14px;}
-  .eyebrow{font-family:'Caveat',cursive;font-size:30px;color:var(--gold);line-height:1;}
-  h1{font-size:34px;font-weight:800;letter-spacing:-.02em;margin:6px 0 8px;}
-  .sub{color:var(--ink-soft);font-size:15px;max-width:620px;margin:0 auto;}
-  .meta{color:var(--grey);font-size:13px;margin-top:10px;}
-  .ver{display:inline-block;background:var(--ink);color:var(--cream);font-weight:700;font-size:12px;letter-spacing:.03em;padding:3px 10px;border-radius:999px;}
+  header{text-align:left;margin-bottom:30px;padding-bottom:20px;border-bottom:2px solid var(--ink);}
+  .eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+  h1{font-size:33px;font-weight:800;letter-spacing:-.02em;margin:7px 0 10px;}
+  .meta{color:var(--grey);font-size:13px;}
+  .ver{display:inline-block;background:var(--ink);color:var(--cream);font-weight:700;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;}
 
   /* Version history */
   .history{
-    max-width:680px;margin:46px auto 0;
-    background:var(--card);border:1px solid var(--line);border-radius:12px;
-    padding:6px 22px;
+    margin:18px 0 0;
+    border-top:1px solid var(--line);
+    padding:0;
   }
   .history summary{
     cursor:pointer;font-weight:700;font-size:14px;padding:14px 0;list-style:none;
@@ -57,22 +56,20 @@
   .history[open] summary:before{transform:rotate(90deg);}
   .history .row{padding:10px 0 14px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink-soft);}
   .history .row b{color:var(--ink);}
-  .history .vtag{display:inline-block;background:var(--gold-soft);color:#a9791a;font-weight:700;font-size:11.5px;padding:2px 8px;border-radius:999px;margin-right:8px;}
+  .history .vtag{display:inline-block;background:var(--gold-soft);color:#a9791a;font-weight:700;font-size:11px;letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;margin-right:8px;}
 
-  /* How to read */
+  /* How to read — sits at the bottom now, quiet reference block */
   .howto{
-    background:var(--gold-soft);
-    border:1px solid #ecd9a8;
-    border-radius:12px;
-    padding:16px 20px;
-    margin:28px 0 8px;
-    font-size:14px;
+    border-top:1px solid var(--line);
+    padding:22px 0 0;
+    margin:48px 0 0;
+    font-size:13.5px;
     color:var(--ink-soft);
   }
   .howto b{color:var(--ink);}
-  .legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:12px;}
-  .legend span{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink-soft);}
-  .dot{width:11px;height:11px;border-radius:3px;display:inline-block;}
+  .legend{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:14px;}
+  .legend span{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-soft);}
+  .dot{width:10px;height:10px;display:inline-block;}
 
   /* Section heading */
   .section-head{
@@ -92,16 +89,13 @@
   .card{
     background:var(--card);
     border:1px solid var(--line);
-    border-radius:14px;
     padding:18px 20px 20px;
-    box-shadow:0 1px 2px rgba(40,30,10,.04);
   }
-  .card.primary{border-left:4px solid var(--gold);}
   .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:10px;}
   .card h3{font-size:18px;font-weight:700;letter-spacing:-.01em;}
   .chip{
-    font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
-    padding:3px 9px;border-radius:999px;white-space:nowrap;
+    font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    padding:3px 8px;white-space:nowrap;
   }
   .chip.keep{background:#e9eef1;color:#5d6772;}
   .chip.new{background:var(--green-soft);color:var(--green);}
@@ -124,7 +118,7 @@
     display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px;
   }
   .child{
-    background:var(--cream);border:1px dashed #d8cfbe;border-radius:10px;padding:12px 14px;
+    background:var(--cream);border:1px solid var(--line);padding:12px 14px;
   }
   .child h4{font-size:14px;font-weight:700;margin-bottom:6px;}
   .child li{font-size:12.5px;margin-bottom:3px;padding-left:13px;}
@@ -150,21 +144,8 @@
   <header>
     <div class="eyebrow">Benson Theatre</div>
     <h1>Proposed Website Structure</h1>
-    <p class="sub">A map of every page on the new site and what lives on each one. This pairs with the full content draft. Review the hierarchy, mark anything you want moved, renamed, added, or cut, and approve so we can lock it and start building.</p>
-    <p class="meta"><span class="ver">Version 1.0</span> · June 3, 2026 · For board review &amp; approval</p>
+    <p class="meta"><span class="ver">Version 1.0</span> · June 3, 2026</p>
   </header>
-
-  <div class="howto">
-    <b>How to read this:</b> Each box is one page. The tags show what is changing from the current site. Bullet points are the gist of what goes on each page, not final copy (final copy lives in the companion content doc). The top row is the main menu; below it are the supporting pages reached from the footer or from within other pages.
-    <div class="legend">
-      <span><span class="dot" style="background:#5d6772;"></span> Keep — carries over unchanged</span>
-      <span><span class="dot" style="background:var(--green);"></span> New — didn't exist before</span>
-      <span><span class="dot" style="background:var(--blue);"></span> Merged — combines old pages</span>
-      <span><span class="dot" style="background:var(--gold);"></span> Updated — rewritten / renamed</span>
-      <span><span class="dot" style="background:#cdc6b8;border:1px dashed #b3a994;"></span> Hidden — greyed out, live but off the menu</span>
-      <span><span class="dot" style="background:#cdc6b8;border:1px dashed #b3a994;"></span> Archived — greyed out, kept for old links</span>
-    </div>
-  </div>
 
   <div class="section-head"><h2>Main Menu</h2></div>
   <div class="grid">
@@ -343,9 +324,21 @@
 
   </div>
 
+  <div class="howto">
+    <b>How to read this:</b> each box is a page. The tag shows what is changing from the current site, and the bullets are the gist of what goes on it. Final copy lives in the companion content doc.
+    <div class="legend">
+      <span><span class="dot" style="background:#5d6772;"></span> <b>Keep</b>&nbsp;carries over unchanged</span>
+      <span><span class="dot" style="background:var(--green);"></span> <b>New</b>&nbsp;didn't exist before</span>
+      <span><span class="dot" style="background:var(--blue);"></span> <b>Merged</b>&nbsp;combines old pages</span>
+      <span><span class="dot" style="background:var(--gold);"></span> <b>Updated</b>&nbsp;rewritten or renamed</span>
+      <span><span class="dot" style="background:#cdc6b8;border:1px dashed #b3a994;"></span> <b>Hidden</b>&nbsp;greyed out, off the menu</span>
+      <span><span class="dot" style="background:#cdc6b8;border:1px dashed #b3a994;"></span> <b>Archived</b>&nbsp;greyed out, kept for old links</span>
+    </div>
+  </div>
+
   <details class="history">
     <summary>Version history</summary>
-    <div class="row"><span class="vtag">v1.0</span><b>June 3, 2026</b> — First structure proposal. Combines the board's input into one map: Programming &amp; Education merged into "Education &amp; Community," News &amp; Press merged into "Newsroom," "Booking &amp; Rentals" renamed "Rent the Theatre," Press Kit added.</div>
+    <div class="row"><span class="vtag">v1.0</span><b>June 3, 2026.</b> First structure proposal. Combines the board's input into one map: Programming &amp; Education merged into "Education &amp; Community," News &amp; Press merged into "Newsroom," "Booking &amp; Rentals" renamed "Rent the Theatre," Press Kit added.</div>
   </details>
 
   <footer>
